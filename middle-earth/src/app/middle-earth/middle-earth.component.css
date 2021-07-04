@@ -1,0 +1,29 @@
+section {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+img {
+  object-fit: cover;
+}
+
+.aragorn {
+  position: absolute;
+  left: 700px;
+  top: 700px;
+}
+
+.character-card {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: whitesmoke;
+  box-shadow: grey 1px 1px;
+  object-fit: contain;
+}
+
+.character-card img {
+  width: 100%;
+  height: 100%;
+}
