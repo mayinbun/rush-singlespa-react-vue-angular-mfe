@@ -33,7 +33,7 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        'aragorn': 'aragorn@http://localhost:5000/remoteEntry.js',
+        './AragornModule': 'http://localhost:5000/remoteEntry.js',
       },
 
       shared: share({
