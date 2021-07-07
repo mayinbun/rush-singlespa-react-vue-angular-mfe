@@ -33,18 +33,29 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        './AragornModule': 'http://localhost:5000/remoteEntry.js',
+        'aragorn': 'aragorn@http://localhost:5000/remoteEntry.js',
+        'gandalf': 'gandalf@http://localhost:5001/remoteEntry.js'
       },
 
-      shared: share({
-        '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      shared:
+        {
+          react: {
+            singleton: true,
+            strictVersion: true,
+          },
+          'react-dom': {
+            singleton: true,
+            strictVersion: true
+          },
+          ...share({
+            '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+            '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+            '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+            '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
-        ...sharedMappings.getDescriptors(),
-      }),
-
+            ...sharedMappings.getDescriptors(),
+          }),
+        }
     }),
     sharedMappings.getPlugin(),
   ],

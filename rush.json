@@ -443,6 +443,11 @@
       "packageName": "aragorn",
       "projectFolder": "aragorn",
       "reviewCategory": "production"
+    },
+    {
+      "packageName": "gandalf",
+      "projectFolder": "gandalf",
+      "reviewCategory": "production"
     }
     //
     // {

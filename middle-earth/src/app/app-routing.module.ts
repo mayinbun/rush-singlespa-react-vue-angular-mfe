@@ -1,6 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CustomElementInjectorComponent } from './custom-element-injector-component';
 import { MiddleEarthComponent } from './middle-earth/middle-earth.component';
 
 const routes: Routes = [
@@ -9,7 +10,7 @@ const routes: Routes = [
     component: MiddleEarthComponent,
     pathMatch: 'full'
   },
-  {
+  { // Angular Remote
     path: 'aragorn',
     loadChildren: () => loadRemoteModule({
       remoteEntry: 'http://localhost:5000/remoteEntry.js',
@@ -17,11 +18,18 @@ const routes: Routes = [
       exposedModule: './AragornModule'
     }).then(m => m.AragornModule)
   },
+  { // React Remote
+    path: 'gandalf',
+    component: CustomElementInjectorComponent,
+    data: {
+      elementName: 'gandalf-app',
+      importFn: () => import('gandalf/app')
+    },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

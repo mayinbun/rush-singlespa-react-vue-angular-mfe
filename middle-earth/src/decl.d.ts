@@ -1,2 +1,1 @@
-// micro frontend declarations
-declare module 'aragorn/AragornModule';
+declare module 'gandalf/app';

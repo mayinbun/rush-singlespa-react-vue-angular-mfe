@@ -14,6 +14,12 @@ img {
   top: 700px;
 }
 
+.gandalf {
+  position: absolute;
+  left: 975px;
+  top: 300px;
+}
+
 .character-card {
   position: relative;
   width: 150px;
