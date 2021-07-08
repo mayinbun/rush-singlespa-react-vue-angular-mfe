@@ -23,7 +23,9 @@ const routes: Routes = [
     component: CustomElementInjectorComponent,
     data: {
       elementName: 'gandalf-app',
-      importFn: () => import('gandalf/app')
+      remoteEntry: 'http://localhost:5001/remoteEntry.js',
+      remoteName: 'gandalf',
+      exposedModule: './app'
     },
   }
 ];

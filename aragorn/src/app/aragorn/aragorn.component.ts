@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: './aragorn.component.html',
-  styleUrls: ['./aragorn.component.css']
+  styleUrls: ['./aragorn.component.css'],
 })
 export class AragornComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('init');
+    this.titleService.setTitle('Aragorn aka Strider')
+  }
 
 }

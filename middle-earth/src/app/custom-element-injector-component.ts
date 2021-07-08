@@ -1,11 +1,11 @@
+import { loadRemoteModule } from '@angular-architects/module-federation';
 import { DOCUMENT } from '@angular/common';
 import { AfterContentInit, ChangeDetectionStrategy, Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'custom-element-injector',
-  template: `
-    <section #vc></section>`,
+  template: '<section #vc></section>',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomElementInjectorComponent implements AfterContentInit {
@@ -13,14 +13,20 @@ export class CustomElementInjectorComponent implements AfterContentInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngAfterContentInit() {
     const elementName = this.activatedRoute.snapshot.data['elementName'];
-    const importFn: () => Promise<void> = this.activatedRoute.snapshot.data['importFn'];
+    const remoteEntry = this.activatedRoute.snapshot.data['remoteEntry'];
+    const remoteName = this.activatedRoute.snapshot.data['remoteName'];
+    const exposedModule = this.activatedRoute.snapshot.data['exposedModule'];
 
-    importFn()
+    loadRemoteModule({
+      remoteEntry,
+      remoteName,
+      exposedModule,
+    })
       .then(() => {
         const element = this.document.createElement(elementName);
         this.viewContainer.nativeElement.appendChild(element);
