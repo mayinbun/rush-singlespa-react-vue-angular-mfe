@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import gandalf from './Gandalf.jpg';
+import gandalf from '../../assets/gandalf.jpg'
 
 export class GandalfCard extends React.Component {
     render() {

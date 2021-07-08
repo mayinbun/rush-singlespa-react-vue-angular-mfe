@@ -10,14 +10,20 @@ img {
 
 .aragorn {
   position: absolute;
-  left: 700px;
-  top: 700px;
+  left: 400px;
+  top: 300px;
 }
 
 .gandalf {
   position: absolute;
   left: 975px;
   top: 300px;
+}
+
+.saruman {
+  position: absolute;
+  left: 525px;
+  top: 600px;
 }
 
 .character-card {

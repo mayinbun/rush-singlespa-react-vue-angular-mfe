@@ -11,7 +11,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: 'aragorn',
-    publicPath: 'auto',
+    publicPath: 'http://localhost:5000/',
   },
   optimization: {
     runtimeChunk: false,

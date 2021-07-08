@@ -6,8 +6,8 @@ module.exports = (env, argv) => {
     return {
         output: {
             filename: 'index.bundle.js',
-            uniqueName: 'gandalf',
-            publicPath: "http://localhost:5001/",
+            uniqueName: 'saruman',
+            publicPath: "http://localhost:5002/",
         },
         module: {
             rules: [
@@ -29,7 +29,7 @@ module.exports = (env, argv) => {
                     use: ['style-loader', 'css-loader'],
                 },
                 {
-                    test: /\.(jpg|png|ico)$/,
+                    test: /\.(jpg|jpeg|png|ico)$/,
                     use: {
                         loader: 'file-loader'
                     }
@@ -43,7 +43,7 @@ module.exports = (env, argv) => {
                 filename: './index.html',
             }),
             new ModuleFederationPlugin({
-                name: "gandalf",
+                name: "saruman",
                 filename: "remoteEntry.js",
                 exposes: {
                     './app': './src/app.js',
@@ -65,7 +65,7 @@ module.exports = (env, argv) => {
             }),
         ],
         devServer: {
-            port: 5001,
+            port: 5002,
             watchContentBase: true,
         },
     }

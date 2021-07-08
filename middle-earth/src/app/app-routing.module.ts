@@ -27,6 +27,16 @@ const routes: Routes = [
       remoteName: 'gandalf',
       exposedModule: './app'
     },
+  },
+  { // React Remote
+    path: 'saruman',
+    component: CustomElementInjectorComponent,
+    data: {
+      elementName: 'saruman-app',
+      remoteEntry: 'http://localhost:5002/remoteEntry.js',
+      remoteName: 'saruman',
+      exposedModule: './app'
+    },
   }
 ];
 

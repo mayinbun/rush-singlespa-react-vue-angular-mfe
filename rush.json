@@ -448,6 +448,11 @@
       "packageName": "gandalf",
       "projectFolder": "gandalf",
       "reviewCategory": "production"
+    },
+    {
+      "packageName": "saruman",
+      "projectFolder": "saruman",
+      "reviewCategory": "production"
     }
     //
     // {
