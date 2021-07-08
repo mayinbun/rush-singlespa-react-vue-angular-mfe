@@ -22,6 +22,7 @@ The apps will run on the following ports:
 - middle-earth (host/shell app): `http://localhost:3000`
 - aragorn (remote angular app): `http://localhost:5000`
 - gandalf (remote react app wrapped in custom-element): `http://localhost:5001`
+- saruman (remote react app wrapped in custom-element): `http://localhost:5002`
 
 ### Webpack
 The webpack configs are auto generated with [@angular-architects/module-federation](https://github.com/angular-architects/module-federation-plugin) package
