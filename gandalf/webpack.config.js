@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
         output: {
             filename: 'index.bundle.js',
             uniqueName: 'gandalf',
-            publicPath: "http://localhost:5001/",
+            publicPath: 'http://localhost:5001/',
         },
         module: {
             rules: [
@@ -31,9 +31,9 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(jpg|png|ico)$/,
                     use: {
-                        loader: 'file-loader'
-                    }
-                }
+                        loader: 'file-loader',
+                    },
+                },
             ],
         },
         plugins: [
@@ -43,30 +43,38 @@ module.exports = (env, argv) => {
                 filename: './index.html',
             }),
             new ModuleFederationPlugin({
-                name: "gandalf",
-                filename: "remoteEntry.js",
+                name: 'gandalf',
+                filename: 'remoteEntry.js',
                 exposes: {
-                    './app': './src/app.js',
+                    './App': './src/app.js',
+                    './custom-element': './src/custom-element.js',
                 },
                 shared: {
                     react: {
                         singleton: true,
-                        eager: isDev
+                        eager: isDev,
                     },
                     'react-dom': {
                         singleton: true,
-                        eager: isDev
+                        eager: isDev,
                     },
                     'react-helmet': {
                         singleton: true,
-                        eager: isDev
-                    }
+                        eager: isDev,
+                    },
+                    'single-spa-react': {
+                        singleton: true,
+                        eager: isDev,
+                    },
                 },
             }),
         ],
         devServer: {
             port: 5001,
             watchContentBase: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            },
         },
     }
 }

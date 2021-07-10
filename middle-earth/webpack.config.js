@@ -38,21 +38,14 @@ module.exports = {
         'saruman': 'saruman@http://localhost:5002/remoteEntry.js',
       },
 
-      shared:
-        [
-          'react',
-          'react-dom',
-          {
-            ...share({
-              '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-              '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-              '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-              '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      shared: share({
+        '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
-              ...sharedMappings.getDescriptors(),
-            }),
-          },
-        ],
+        ...sharedMappings.getDescriptors(),
+      }),
     }),
     sharedMappings.getPlugin(),
   ],

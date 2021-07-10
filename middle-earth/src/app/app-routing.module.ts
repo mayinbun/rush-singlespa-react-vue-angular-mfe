@@ -25,7 +25,7 @@ const routes: Routes = [
       elementName: 'gandalf-app',
       remoteEntry: 'http://localhost:5001/remoteEntry.js',
       remoteName: 'gandalf',
-      exposedModule: './app'
+      exposedModule: './custom-element'
     },
   },
   { // React Remote
