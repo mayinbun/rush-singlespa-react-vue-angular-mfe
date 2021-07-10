@@ -39,6 +39,7 @@ module.exports = (webpackConfigEnv, argv) => {
                 filename: 'remoteEntry.js',
                 remotes: {
                     'gandalf': 'gandalf@http://localhost:5001/remoteEntry.js',
+                    'saruman': 'saruman@http://localhost:5002/remoteEntry.js'
                 },
                 exposes: {},
                 shared: [],

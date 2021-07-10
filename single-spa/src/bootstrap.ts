@@ -1,6 +1,8 @@
 const appImports = {
     // @ts-ignore
     gandalf: () => import('gandalf/App'),
+    // @ts-ignore
+    saruman: () => import('saruman/App'),
 };
 
 import { registerApplication, start } from 'single-spa';
@@ -10,7 +12,27 @@ import {
     constructLayoutEngine,
 } from 'single-spa-layout';
 
-const routes = constructRoutes(document.querySelector('#single-spa-layout'));
+const routes = constructRoutes({
+    routes: [
+        {
+            type: 'route', path: 'gandalf', routes: [
+                {
+                    type: 'application',
+                    name: 'gandalf',
+                },
+            ],
+        },
+        {
+            type: 'route', path: 'saruman', routes: [
+                {
+                    type: 'application',
+                    name: 'saruman',
+                },
+            ],
+        },
+    ],
+});
+
 const applications = constructApplications({
         routes,
         loadApp: ({ name }) => appImports[name](),

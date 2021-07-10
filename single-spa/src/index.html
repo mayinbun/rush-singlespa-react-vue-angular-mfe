@@ -5,26 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lord of the Spa's</title>
-
-    <!-- Single Spa Layout Routes !-->
-    <template id="single-spa-layout">
-        <single-spa-router>
-            <main class="main-content" style="height: 100%; display: flex; flex-direction: column;">
-                <route default>
-                    <h3>Middle earth</h3>
-                </route>
-                <route path="gandalf">
-                    <application name="gandalf"></application>
-                </route>
-            </main>
-        </single-spa-router>
-    </template>
 </head>
 <body>
-<noscript>
-    You need to enable JavaScript to run this app.
-</noscript>
+<button style="background: cornflowerblue; color: white" onclick="goToPage('/gandalf')">Team Gandalf</button>
+<button style="background: darkred; color: white" onclick="goToPage('/saruman')">Team Saruman</button>
+
+<script>
+    function goToPage(page) {
+        history.pushState({}, '', page || '')
+    }
+</script>
 
 </body>
 </html>
