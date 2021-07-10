@@ -46,7 +46,8 @@ module.exports = (env, argv) => {
                 name: "saruman",
                 filename: "remoteEntry.js",
                 exposes: {
-                    './app': './src/app.js',
+                    './App': './src/app.js',
+                    './custom-element': './src/custom-element.js'
                 },
                 shared: {
                     react: {
@@ -60,13 +61,20 @@ module.exports = (env, argv) => {
                     'react-helmet': {
                         singleton: true,
                         eager: isDev
-                    }
+                    },
+                    'single-spa-react': {
+                        singleton: true,
+                        eager: isDev,
+                    },
                 },
             }),
         ],
         devServer: {
             port: 5002,
             watchContentBase: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            },
         },
     }
 }

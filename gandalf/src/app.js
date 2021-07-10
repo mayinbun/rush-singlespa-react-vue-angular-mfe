@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { GandalfCard } from './components/gandalf-card/gandalf-card';
 import singleSpaReact from 'single-spa-react';
-
 import favicon from './favicon.ico';
 
 export default class App extends React.Component {
@@ -20,12 +19,8 @@ export default class App extends React.Component {
     }
 }
 
-const lifecycles = singleSpaReact({
+export const { bootstrap, mount, unmount } = singleSpaReact({
     React,
     ReactDOM,
-    rootComponent: App
-})
-
-export const bootstrap = lifecycles.bootstrap
-export const mount = lifecycles.mount
-export const unmount = lifecycles.unmount
+    rootComponent: App,
+});

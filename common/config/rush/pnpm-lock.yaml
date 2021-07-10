@@ -11812,7 +11812,7 @@ packages:
     dev: false
 
   file:projects/saruman.tgz:
-    resolution: {integrity: sha512-9botEoNlc68EsNcvpbmYdgV+UVDjwhxKWP4L2V5nbl3ZpzPt2Eszh6Xfo0sVWzgPkTPDpNp+b1pwC88EUf+crg==, tarball: file:projects/saruman.tgz}
+    resolution: {integrity: sha512-qdc6EaoJraFpfDuW85N5oAqN3l6aF3b5I/meiPlEJhuDM1EW7hDx7EXkKeylNrNLE3FjKQ/oap4SzDFEzT54cA==, tarball: file:projects/saruman.tgz}
     name: '@rush-temp/saruman'
     version: 0.0.0
     dependencies:
@@ -11826,12 +11826,15 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-helmet: 6.1.0_react@17.0.2
+      single-spa-react: 4.2.0_react@17.0.2
       style-loader: 3.0.0_webpack@5.42.1
       styled-components: 5.3.0_react-dom@17.0.2+react@17.0.2
       webpack: 5.42.1_webpack-cli@4.7.2
       webpack-cli: 4.7.2_3e79559a3e86e2efdebfafad7136b17f
       webpack-dev-server: 3.11.2_webpack-cli@4.7.2+webpack@5.42.1
     transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
       - '@webpack-cli/generators'
       - '@webpack-cli/migrate'
       - react-is
