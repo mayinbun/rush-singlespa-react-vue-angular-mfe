@@ -34,12 +34,11 @@ specifiers:
   eslint-config-important-stuff: ^1.1.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^3.4.0
+  external-remotes-plugin: 1.0.0
+  fast-equals: ~2.0.3
   file-loader: ~6.2.0
   html-webpack-plugin: ~5.3.2
-  husky: ^6.0.0
   jasmine-core: ~3.7.0
-  jest: ^27.0.5
-  jest-cli: ^27.0.5
   karma: ~6.3.0
   karma-chrome-launcher: ~3.1.0
   karma-coverage: ~2.0.3
@@ -50,7 +49,6 @@ specifiers:
   react: 17.0.2
   react-dom: 17.0.2
   react-helmet: 6.1.0
-  rxjs: ~6.6.0
   serve: ^12.0.0
   single-spa: ~5.9.3
   single-spa-layout: ~1.6.0
@@ -70,14 +68,14 @@ dependencies:
   '@angular-devkit/build-angular': 12.1.1_bc248a1d59e321522d395f5aef569d91
   '@angular/animations': 12.1.1_@angular+core@12.1.1
   '@angular/cli': 12.1.1
-  '@angular/common': 12.1.1_@angular+core@12.1.1+rxjs@6.6.7
+  '@angular/common': 12.1.1_@angular+core@12.1.1
   '@angular/compiler': 12.1.1
   '@angular/compiler-cli': 12.1.1_9f77f0dd3273b7700965b9c017043b74
-  '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
-  '@angular/forms': 12.1.1_fb50eb56acf8802a2289994b7bb7c08e
+  '@angular/core': 12.1.1_zone.js@0.11.4
+  '@angular/forms': 12.1.1_f730db9f15dc73d7e9e2ef910087cd66
   '@angular/platform-browser': 12.1.1_230a2a17d1c6a8b3714b56e861bac6c2
   '@angular/platform-browser-dynamic': 12.1.1_7bad67d3a4b10fea90d72aecabe50463
-  '@angular/router': 12.1.1_fb50eb56acf8802a2289994b7bb7c08e
+  '@angular/router': 12.1.1_f730db9f15dc73d7e9e2ef910087cd66
   '@babel/core': 7.14.6
   '@babel/eslint-parser': 7.14.7_@babel+core@7.14.6+eslint@7.30.0
   '@babel/preset-env': 7.14.7_@babel+core@7.14.6
@@ -99,12 +97,11 @@ dependencies:
   eslint-config-important-stuff: 1.1.0
   eslint-config-prettier: 8.3.0_eslint@7.30.0
   eslint-plugin-prettier: 3.4.0_0470f3bcd018a045da11d0bbb868d6c6
+  external-remotes-plugin: 1.0.0_webpack@5.42.1
+  fast-equals: 2.0.3
   file-loader: 6.2.0_webpack@5.42.1
   html-webpack-plugin: 5.3.2_webpack@5.42.1
-  husky: 6.0.0
   jasmine-core: 3.7.1
-  jest: 27.0.6
-  jest-cli: 27.0.6
   karma: 6.3.4
   karma-chrome-launcher: 3.1.0
   karma-coverage: 2.0.3
@@ -115,7 +112,6 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-helmet: 6.1.0_react@17.0.2
-  rxjs: 6.6.7
   serve: 12.0.0
   single-spa: 5.9.3
   single-spa-layout: 1.6.0
@@ -138,8 +134,8 @@ packages:
       '@angular/common': '>=12.0.0'
       '@angular/core': '>=12.0.0'
     dependencies:
-      '@angular/common': 12.1.1_@angular+core@12.1.1+rxjs@6.6.7
-      '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
+      '@angular/common': 12.1.1_@angular+core@12.1.1
+      '@angular/core': 12.1.1_zone.js@0.11.4
       tslib: 2.3.0
     dev: false
 
@@ -334,7 +330,7 @@ packages:
     peerDependencies:
       '@angular/core': 12.1.1
     dependencies:
-      '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
+      '@angular/core': 12.1.1_zone.js@0.11.4
       tslib: 2.3.0
     dev: false
 
@@ -365,6 +361,17 @@ packages:
       uuid: 8.3.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@angular/common/12.1.1_@angular+core@12.1.1:
+    resolution: {integrity: sha512-NnRwGMatzjthvDQ4+8tm09Ak5i27Qga8x4BdzINN1RjLmzQ0zW00Mn2AUGYEDZHt9HXVHff5stsZGqj+Ne4QJw==}
+    engines: {node: ^12.14.1 || >=14.0.0}
+    peerDependencies:
+      '@angular/core': 12.1.1
+      rxjs: ^6.5.3
+    dependencies:
+      '@angular/core': 12.1.1_zone.js@0.11.4
+      tslib: 2.3.0
     dev: false
 
   /@angular/common/12.1.1_@angular+core@12.1.1+rxjs@6.6.7:
@@ -426,6 +433,32 @@ packages:
       zone.js: 0.11.4
     dev: false
 
+  /@angular/core/12.1.1_zone.js@0.11.4:
+    resolution: {integrity: sha512-7Q4na8zCXi4ITBG8kgbS+vnnVK0GDU2WXU80/il096+8YPFKfj6MyDWZH79KA3jrIg9/yhLwSQx8x8wnj8dqBA==}
+    engines: {node: ^12.14.1 || >=14.0.0}
+    peerDependencies:
+      rxjs: ^6.5.3
+      zone.js: ~0.11.4
+    dependencies:
+      tslib: 2.3.0
+      zone.js: 0.11.4
+    dev: false
+
+  /@angular/forms/12.1.1_f730db9f15dc73d7e9e2ef910087cd66:
+    resolution: {integrity: sha512-up5P9jdqsPjrX3YgNMSIkTCwRzVNJbAlDiKrnww7pt5RL2fZGq+x/ddvtTSjdne9oknRKitADFkjuPozPH+LOg==}
+    engines: {node: ^12.14.1 || >=14.0.0}
+    peerDependencies:
+      '@angular/common': 12.1.1
+      '@angular/core': 12.1.1
+      '@angular/platform-browser': 12.1.1
+      rxjs: ^6.5.3
+    dependencies:
+      '@angular/common': 12.1.1_@angular+core@12.1.1
+      '@angular/core': 12.1.1_zone.js@0.11.4
+      '@angular/platform-browser': 12.1.1_230a2a17d1c6a8b3714b56e861bac6c2
+      tslib: 2.3.0
+    dev: false
+
   /@angular/forms/12.1.1_fb50eb56acf8802a2289994b7bb7c08e:
     resolution: {integrity: sha512-up5P9jdqsPjrX3YgNMSIkTCwRzVNJbAlDiKrnww7pt5RL2fZGq+x/ddvtTSjdne9oknRKitADFkjuPozPH+LOg==}
     engines: {node: ^12.14.1 || >=14.0.0}
@@ -451,9 +484,9 @@ packages:
       '@angular/core': 12.1.1
       '@angular/platform-browser': 12.1.1
     dependencies:
-      '@angular/common': 12.1.1_@angular+core@12.1.1+rxjs@6.6.7
+      '@angular/common': 12.1.1_@angular+core@12.1.1
       '@angular/compiler': 12.1.1
-      '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
+      '@angular/core': 12.1.1_zone.js@0.11.4
       '@angular/platform-browser': 12.1.1_230a2a17d1c6a8b3714b56e861bac6c2
       tslib: 2.3.0
     dev: false
@@ -470,8 +503,23 @@ packages:
         optional: true
     dependencies:
       '@angular/animations': 12.1.1_@angular+core@12.1.1
-      '@angular/common': 12.1.1_@angular+core@12.1.1+rxjs@6.6.7
-      '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
+      '@angular/common': 12.1.1_@angular+core@12.1.1
+      '@angular/core': 12.1.1_zone.js@0.11.4
+      tslib: 2.3.0
+    dev: false
+
+  /@angular/router/12.1.1_f730db9f15dc73d7e9e2ef910087cd66:
+    resolution: {integrity: sha512-rv4I9uVQq7gunEGzGFkJDlu4fetOCSAGKPr83Q0Ekx+MuMr6zK0VbRgymMW/5LUaDl5Pobi+XeC3Y5tfjCI3Lg==}
+    engines: {node: ^12.14.1 || >=14.0.0}
+    peerDependencies:
+      '@angular/common': 12.1.1
+      '@angular/core': 12.1.1
+      '@angular/platform-browser': 12.1.1
+      rxjs: ^6.5.3
+    dependencies:
+      '@angular/common': 12.1.1_@angular+core@12.1.1
+      '@angular/core': 12.1.1_zone.js@0.11.4
+      '@angular/platform-browser': 12.1.1_230a2a17d1c6a8b3714b56e861bac6c2
       tslib: 2.3.0
     dev: false
 
@@ -4954,6 +5002,15 @@ packages:
       tmp: 0.0.33
     dev: false
 
+  /external-remotes-plugin/1.0.0_webpack@5.42.1:
+    resolution: {integrity: sha512-19cfGfzmPMXkRNpyqOHgndNB07vjk1G1V7IuyixBw8Z1QTc/IOhINy9TbWzDRPTmj64e3STTI1MJE0gI58p7YA==}
+    peerDependencies:
+      webpack: ^5
+    dependencies:
+      webpack: 5.42.1_webpack-cli@4.7.2
+      webpack-sources: 2.3.0
+    dev: false
+
   /extglob/2.0.4:
     resolution: {integrity: sha512-Nmb6QXkELsuBr24CJSkilo6UHHgbekK5UiZgfE6UHD3Eb27YC6oD+bhcT+tJ6cl8dmsgdQxnWlcry8ksBIBLpw==}
     engines: {node: '>=0.10.0'}
@@ -4979,6 +5036,10 @@ packages:
 
   /fast-diff/1.2.0:
     resolution: {integrity: sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==}
+    dev: false
+
+  /fast-equals/2.0.3:
+    resolution: {integrity: sha512-0EMw4TTUxsMDpDkCg0rXor2gsg+npVrMIHbEhvD0HZyIhUX6AktC/yasm+qKwfyswd06Qy95ZKk8p2crTo0iPA==}
     dev: false
 
   /fast-glob/3.2.6:
@@ -9567,6 +9628,12 @@ packages:
       tslib: 1.14.1
     dev: false
 
+  /rxjs/7.2.0:
+    resolution: {integrity: sha512-aX8w9OpKrQmiPKfT1bqETtUr9JygIz6GZ+gql8v7CijClsP0laoFUdKzxFAoWuRdSlOdU2+crss+cMf+cqMTnw==}
+    dependencies:
+      tslib: 2.1.0
+    dev: false
+
   /safe-buffer/5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
     dev: false
@@ -10690,6 +10757,10 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: false
 
+  /tslib/2.1.0:
+    resolution: {integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==}
+    dev: false
+
   /tslib/2.3.0:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
     dev: false
@@ -11765,7 +11836,7 @@ packages:
     dev: false
 
   file:projects/root-config.tgz:
-    resolution: {integrity: sha512-PU820m1WpXtEup7CfJjzU0ChYeoNdf2LbaYaRwB7B/+lUQb/uFzonrDrq8++RBEPZ0bTjHKCuBov9UjgETa/Vw==, tarball: file:projects/root-config.tgz}
+    resolution: {integrity: sha512-7wapKEqkLkW96KyU1angUJxxvWkCtcPD2MTKJUpUwweSVaiq0gmfebhxdHRCanF4QDe8i9ZCUB7t9DOw4AsAGA==, tarball: file:projects/root-config.tgz}
     name: '@rush-temp/root-config'
     version: 0.0.0
     dependencies:
@@ -11784,12 +11855,15 @@ packages:
       eslint-config-important-stuff: 1.1.0
       eslint-config-prettier: 8.3.0_eslint@7.30.0
       eslint-plugin-prettier: 3.4.0_0470f3bcd018a045da11d0bbb868d6c6
+      external-remotes-plugin: 1.0.0_webpack@5.42.1
+      fast-equals: 2.0.3
       html-webpack-plugin: 5.3.2_webpack@5.42.1
       husky: 6.0.0
       jest: 27.0.6
       jest-cli: 27.0.6
       prettier: 2.3.2
       pretty-quick: 3.1.1_prettier@2.3.2
+      rxjs: 7.2.0
       serve: 12.0.0
       single-spa: 5.9.3
       single-spa-layout: 1.6.0
@@ -11803,10 +11877,7 @@ packages:
       - '@webpack-cli/generators'
       - '@webpack-cli/migrate'
       - bufferutil
-      - canvas
-      - node-notifier
       - supports-color
-      - ts-node
       - utf-8-validate
       - webpack-bundle-analyzer
     dev: false
