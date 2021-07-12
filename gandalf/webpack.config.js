@@ -55,7 +55,7 @@ module.exports = (env, argv) => {
             }),
             new ModuleFederationPlugin({
                 name: 'gandalf',
-                filename: 'remoteEntry.[contenthash].js',
+                filename: 'remoteEntry.js',
                 exposes: {
                     './App': './src/single-spa-entry.js',
                     './custom-element': './src/custom-element.js',

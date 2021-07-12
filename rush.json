@@ -455,6 +455,11 @@
       "reviewCategory": "production"
     },
     {
+      "packageName": "rivendel",
+      "projectFolder": "rivendel",
+      "reviewCategory": "production"
+    },
+    {
       "packageName": "@mayinbun/root-config",
       "projectFolder": "single-spa",
       "reviewCategory": "production"

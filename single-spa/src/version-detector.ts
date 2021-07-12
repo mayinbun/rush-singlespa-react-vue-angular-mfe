@@ -1,44 +1,53 @@
-import { deepEqual } from 'fast-equals';
-import { timer } from 'rxjs';
-import { distinctUntilChanged, filter, map, pairwise } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, pairwise, retry } from 'rxjs/operators';
 
-function getRemoteUrls() {
-    return [
-        {
-            app: 'gandalf',
-            url: (window as any).gandalfAppUrl,
-        },
-    ];
+interface FederationModule {
+    name: string;
+    version: string;
 }
 
-timer(0, 5000).pipe(
-    map(_ => getRemoteUrls()),
-    distinctUntilChanged((a, b) => deepEqual(a, b)),
-    pairwise(),
-    map(([oldValue, newValue]) => {
+const eventsource = new Observable<FederationModule[]>(observer => {
+    const source = new EventSource('http://localhost:9999/events');
+    source.onmessage = x => observer.next(JSON.parse(x.data));
+    source.onerror = x => observer.error(x);
 
-        const changedAppNames = newValue
-            .filter(({ url: url1 }) => !oldValue.some(({ url: url2 }) => url1 === url2))
-            .map((value) => value.app);
+    return () => {
+        source.close();
+    };
+});
 
-        return changedAppNames;
-    }),
-    filter(array => Boolean(array.length)),
-).subscribe((changedAppNames) => {
-    console.log('v', changedAppNames);
-    const currentApp = window.location.pathname.split('/')[1];
+eventsource
+    .pipe(
+        pairwise(),
+        map(([oldValue, newValue]) => {
+            console.log({
+                oldValue,
+                newValue,
+            });
 
-    console.log({
-        changedAppNames,
-        currentApp,
-    });
+            const changedAppNames = newValue
+                .filter(({ version: v1 }) => !oldValue.some(({ version: v2 }) => v1 === v2))
+                .map((value) => value.name);
 
-    if (changedAppNames.includes(currentApp) && !document.getElementById('version-changed-banner')) {
-        let container = document.createElement('div');
-        container.id = 'version-changed-container';
-        container.className = 'version-changed-container';
-        container.setAttribute('style',
-            `
+            return changedAppNames;
+        }),
+        retry(Infinity),
+    )
+    .subscribe(updatedApps => {
+        console.log('updatedApps', updatedApps);
+        const currentApp = window.location.pathname.split('/')[1];
+
+        console.log({
+            updatedApps,
+            currentApp,
+        });
+
+        if (updatedApps.includes(currentApp) && !document.getElementById('version-changed-banner')) {
+            let container = document.createElement('div');
+            container.id = 'version-changed-container';
+            container.className = 'version-changed-container';
+            container.setAttribute('style',
+                `
             position: absolute;
             background: #333333;
             right: 1rem;
@@ -47,23 +56,22 @@ timer(0, 5000).pipe(
             border-radius: 3px;
             cursor: pointer;
         `,
-        );
+            );
 
-        container.addEventListener('click', () => {
-            window.location.reload();
-        })
+            container.addEventListener('click', () => {
+                window.location.reload();
+            });
 
-        let text = document.createElement('h4');
-        text.setAttribute('style', `
+            let text = document.createElement('h4');
+            text.setAttribute('style', `
         color: #999999;
         margin: 0;
         padding: 1rem;
         `);
-        text.textContent = `New version of ${currentApp} available!`;
+            text.textContent = `New version of ${currentApp} available!`;
 
-        container.appendChild(text);
+            container.appendChild(text);
 
-        document.body.appendChild(container);
-    }
-});
-
+            document.body.appendChild(container);
+        }
+    });
