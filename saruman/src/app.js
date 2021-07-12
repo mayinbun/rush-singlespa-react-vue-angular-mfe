@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { SarumanCard } from './components/saruman-card/saruman-card';
-import singleSpaReact from 'single-spa-react';
 
 import favicon from './favicon.ico';
 
 export default class App extends React.Component {
+    componentDidCatch(error, errorInfo) {
+        console.error(error);
+    }
+
     render() {
         return (
             <Fragment>
@@ -19,9 +21,3 @@ export default class App extends React.Component {
         )
     }
 }
-
-export const { bootstrap, mount, unmount } = singleSpaReact({
-    React,
-    ReactDOM,
-    rootComponent: App,
-});

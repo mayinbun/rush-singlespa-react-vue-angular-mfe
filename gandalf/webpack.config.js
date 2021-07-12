@@ -1,11 +1,22 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
+const pkg = require('./package.json');
 
 module.exports = (env, argv) => {
     const isDev = argv.mode === 'development';
+    const sharedDeps = Object.keys(pkg.dependencies).map((key) => {
+        return {
+            [key]: {
+                eager: isDev,
+                singleton: true,
+                strictVersion: true
+            }
+        }
+    })
     return {
         output: {
-            filename: 'index.bundle.js',
+            filename: '[name].[contenthash].bundle.js',
             uniqueName: 'gandalf',
             publicPath: 'http://localhost:5001/',
         },
@@ -44,29 +55,14 @@ module.exports = (env, argv) => {
             }),
             new ModuleFederationPlugin({
                 name: 'gandalf',
-                filename: 'remoteEntry.js',
+                filename: 'remoteEntry.[contenthash].js',
                 exposes: {
-                    './App': './src/app.js',
+                    './App': './src/single-spa-entry.js',
                     './custom-element': './src/custom-element.js',
                 },
-                shared: {
-                    react: {
-                        singleton: true,
-                        eager: isDev,
-                    },
-                    'react-dom': {
-                        singleton: true,
-                        eager: isDev,
-                    },
-                    'react-helmet': {
-                        singleton: true,
-                        eager: isDev,
-                    },
-                    'single-spa-react': {
-                        singleton: true,
-                        eager: isDev,
-                    },
-                },
+                shared: [
+                    ...sharedDeps
+                ]
             }),
         ],
         devServer: {

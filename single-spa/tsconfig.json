@@ -3,6 +3,7 @@
     "esModuleInterop": true,
     "module": "ESNext",
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "lib": [

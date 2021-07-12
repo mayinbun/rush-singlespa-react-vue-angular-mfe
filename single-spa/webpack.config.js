@@ -3,24 +3,26 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const ExternalRemotesPlugin = require('external-remotes-plugin');
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'dist')
+const { gandalfApp } = require('./remotes');
 
 module.exports = (webpackConfigEnv, argv) => {
     return {
         entry: {
             main: './src/index',
-            version_detector: './src/version-detector'
+            version_detector: './src/version-detector',
         },
         mode: 'development',
         devtool: 'source-map',
         optimization: {
-            minimize: false,
+            splitChunks: { chunks: 'all' },
         },
         output: {
+            filename: '[name].[contenthash].js',
             publicPath: 'http://localhost:9000/',
         },
         devServer: {
             historyApiFallback: true,
-            contentBase: outputPath
+            contentBase: outputPath,
         },
         resolve: {
             extensions: ['.jsx', '.js', '.json', '.ts', '.tsx'],
@@ -30,20 +32,16 @@ module.exports = (webpackConfigEnv, argv) => {
                 {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
-                    loader: require.resolve('babel-loader'),
-                    options: {
-                        presets: [require.resolve('@babel/preset-typescript')],
-                    },
+                    loader: 'babel-loader',
                 },
             ],
         },
         plugins: [
             new ModuleFederationPlugin({
                 name: 'single-spa',
-                filename: 'remoteEntry.js',
                 remotes: {
-                    'gandalf': 'gandalf@[window.gandalfAppUrl]',
-                    'saruman': 'saruman@[window.sarumanAppUrl]'
+                    'gandalf': gandalfApp.federationConfig,
+                    'saruman': 'saruman@[window.sarumanAppUrl]/remoteEntry.js',
                 },
                 exposes: {},
                 shared: [],
@@ -51,7 +49,7 @@ module.exports = (webpackConfigEnv, argv) => {
             new ExternalRemotesPlugin(),
             new HtmlWebpackPlugin({
                 template: 'src/index.html',
-                inject: 'body'
+                inject: 'body',
             }),
         ],
     }

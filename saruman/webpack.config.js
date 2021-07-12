@@ -1,8 +1,19 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pkg = require('./package.json');
 
 module.exports = (env, argv) => {
     const isDev = argv.mode === 'development';
+    const sharedDeps = Object.keys(pkg.dependencies).map((key) => {
+        return {
+            [key]: {
+                eager: isDev,
+                singleton: true,
+                strictVersion: true
+            }
+        }
+    })
+
     return {
         output: {
             filename: 'index.bundle.js',
@@ -46,27 +57,12 @@ module.exports = (env, argv) => {
                 name: "saruman",
                 filename: "remoteEntry.js",
                 exposes: {
-                    './App': './src/app.js',
+                    './App': './src/single-spa-entry.js',
                     './custom-element': './src/custom-element.js'
                 },
-                shared: {
-                    react: {
-                        singleton: true,
-                        eager: isDev
-                    },
-                    'react-dom': {
-                        singleton: true,
-                        eager: isDev
-                    },
-                    'react-helmet': {
-                        singleton: true,
-                        eager: isDev
-                    },
-                    'single-spa-react': {
-                        singleton: true,
-                        eager: isDev,
-                    },
-                },
+                shared: [
+                    ...sharedDeps
+                ]
             }),
         ],
         devServer: {

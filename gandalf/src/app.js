@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { GandalfCard } from './components/gandalf-card/gandalf-card';
-import singleSpaReact from 'single-spa-react';
 import favicon from './favicon.ico';
 
 export default class App extends React.Component {
@@ -18,9 +16,3 @@ export default class App extends React.Component {
         )
     }
 }
-
-export const { bootstrap, mount, unmount } = singleSpaReact({
-    React,
-    ReactDOM,
-    rootComponent: App,
-});

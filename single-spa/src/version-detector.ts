@@ -1,5 +1,6 @@
 import { deepEqual } from 'fast-equals';
-import { distinctUntilChanged, filter, interval, map, pairwise, skip, timer } from 'rxjs';
+import { timer } from 'rxjs';
+import { distinctUntilChanged, filter, map, pairwise } from 'rxjs/operators';
 
 function getRemoteUrls() {
     return [
