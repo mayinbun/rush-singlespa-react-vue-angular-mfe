@@ -1,8 +1,9 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('./package.json');
+const { createRemoteMetaFromPackage } = require('@mayinbun/build-tools');
 
-const remoteName = 'gandalf';
+const meta = createRemoteMetaFromPackage()
 
 module.exports = (env, argv) => {
     const isDev = argv.mode === 'development';
@@ -11,14 +12,14 @@ module.exports = (env, argv) => {
             [key]: {
                 eager: isDev,
                 singleton: true,
-                strictVersion: true
-            }
+                strictVersion: true,
+            },
         }
     })
     return {
         output: {
             filename: '[name].[contenthash].bundle.js',
-            uniqueName: remoteName,
+            uniqueName: meta.remoteName,
             publicPath: 'http://localhost:5001/',
         },
         module: {
@@ -55,22 +56,22 @@ module.exports = (env, argv) => {
                 filename: './index.html',
             }),
             new ModuleFederationPlugin({
-                name: remoteName,
-                filename: `remoteEntry_${pkg.version}.js`,
+                name: meta.remoteName,
+                filename: meta.remoteEntryFileName,
                 exposes: {
                     './App': './src/single-spa-entry.js',
                     './custom-element': './src/custom-element.js',
                 },
                 shared: [
-                    ...sharedDeps
-                ]
+                    ...sharedDeps,
+                ],
             }),
         ],
         devServer: {
             port: 5001,
             watchContentBase: true,
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Origin': '*',
             },
         },
     }

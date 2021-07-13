@@ -1,11 +1,23 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 const ExternalRemotesPlugin = require('external-remotes-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'dist')
-const { gandalfApp } = require('./remotes');
+const fetch = require('node-fetch');
 
-module.exports = (webpackConfigEnv, argv) => {
+module.exports = async (webpackConfigEnv, argv) => {
+   /* const meta = await fetch('http://localhost:9999/versions').then(res => res.json());
+
+    const remotesFromMeta = meta.reduce((remotes, item) => {
+        return {
+            ...remotes,
+            [item.remoteName]: `${item.remoteName}@[window.${item.remoteWindowProperty}]`
+        }
+    }, {});
+
+    console.log(remotesFromMeta);*/
+
     return {
         entry: {
             main: './src/index',
@@ -13,6 +25,7 @@ module.exports = (webpackConfigEnv, argv) => {
         },
         mode: 'development',
         devtool: 'source-map',
+        target: 'web',
         optimization: {
             splitChunks: { chunks: 'all' },
         },
@@ -23,6 +36,9 @@ module.exports = (webpackConfigEnv, argv) => {
         devServer: {
             historyApiFallback: true,
             contentBase: outputPath,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
         },
         resolve: {
             extensions: ['.jsx', '.js', '.json', '.ts', '.tsx'],
@@ -30,9 +46,11 @@ module.exports = (webpackConfigEnv, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
+                    test: /\.ts?$/,
                     exclude: /node_modules/,
-                    loader: 'babel-loader',
+                    use: {
+                        loader: 'ts-loader',
+                    },
                 },
             ],
         },
@@ -40,7 +58,7 @@ module.exports = (webpackConfigEnv, argv) => {
             new ModuleFederationPlugin({
                 name: 'single-spa',
                 remotes: {
-                    'gandalf': gandalfApp.federationConfig,
+                    gandalf: 'gandalf@[window.__remote__gandalf__]',
                     'saruman': 'saruman@[window.sarumanAppUrl]/remoteEntry.js',
                 },
                 exposes: {},

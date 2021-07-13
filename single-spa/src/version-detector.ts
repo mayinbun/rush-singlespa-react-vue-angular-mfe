@@ -2,12 +2,12 @@ import { Observable } from 'rxjs';
 import { map, pairwise, retry } from 'rxjs/operators';
 
 interface FederationModule {
-    name: string;
-    version: string;
+    remoteName: string;
+    remoteVersion: string;
 }
 
 const eventsource = new Observable<FederationModule[]>(observer => {
-    const source = new EventSource('http://localhost:9999/events');
+    const source = new EventSource('http://localhost:9999/sse');
     source.onmessage = x => observer.next(JSON.parse(x.data));
     source.onerror = x => observer.error(x);
 
@@ -26,8 +26,8 @@ eventsource
             });
 
             const changedAppNames = newValue
-                .filter(({ version: v1 }) => !oldValue.some(({ version: v2 }) => v1 === v2))
-                .map((value) => value.name);
+                .filter(({ remoteVersion: v1 }) => !oldValue.some(({ remoteVersion: v2 }) => v1 === v2))
+                .map((value) => value.remoteName);
 
             return changedAppNames;
         }),

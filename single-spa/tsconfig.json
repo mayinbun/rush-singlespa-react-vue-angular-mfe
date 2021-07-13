@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "module": "ESNext",
-    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "module": "ES2020",
+    "target": "ES5",
     "allowJs": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
@@ -10,7 +11,6 @@
       "dom",
       "es2018"
     ],
-    "noEmit": true,
     "jsx": "react"
   },
   "include": ["src/**/*"]

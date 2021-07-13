@@ -9,13 +9,25 @@ function createRemoteMetaFromPackage() {
     try {
         const pkg = JSON.parse(fs.readFileSync(getPackageJsonPath()));
 
+        if(!pkg.remoteLocalUrl) {
+            throw 'please define custom property "remoteLocalUrl" in your remotes package.json';
+        }
+
+        if(!pkg.remoteCdnUrl) {
+            throw 'please define custom property "remoteCdnUrl" in your remotes package.json';
+        }
+
         return {
             remoteName: pkg.name,
+            remoteVersion: pkg.version,
             remoteEntryFileName: `remoteEntry_${ pkg.name }_${ pkg.version }.js`,
+            remoteWindowProperty: `__remote__${pkg.name}__`,
+            remoteLocalUrl: pkg.remoteLocalUrl,
+            remoteCdnUrl: pkg.remoteCdnUrl
         }
 
     } catch (e) {
-        throw new Error(e);
+        throw e;
     }
 }
 

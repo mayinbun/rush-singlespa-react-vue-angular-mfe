@@ -6,8 +6,8 @@ const db = new loki('rivendel.db.json', {
 });
 
 const apps = db.addCollection('apps', {
-    exact: ['name', 'version'],
-    unique: ['name'],
+    exact: ['remoteName', 'remoteVersion', 'remoteEntryFileName', 'remoteWindowProperty', 'remoteLocalUrl', 'remoteCdnUrl'],
+    unique: ['remoteName'],
     autoupdate: true,
 });
 

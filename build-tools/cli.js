@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs')
-const { readFile } = require('fs').promises;
-const path = require('path');
 const fetch = require('node-fetch');
 const { hideBin } = require('yargs/helpers')
 const { createRemoteMetaFromPackage } = require('./util');
@@ -28,11 +26,15 @@ yargs(hideBin(process.argv))
         try {
             const meta = createRemoteMetaFromPackage();
 
-            await fetch(`${ backendApiUrl }/update?name=${ meta.remoteName }&version=${ meta.remoteEntryFileName }`);
+            const result = await fetch(`${ backendApiUrl }/update?remoteName=${ meta.remoteName }&remoteVersion=${ meta.remoteVersion }&remoteEntryFileName=${ meta.remoteEntryFileName }&remoteWindowProperty=${ meta.remoteWindowProperty }&remoteLocalUrl=${meta.remoteLocalUrl}&remoteCdnUrl=${meta.remoteCdnUrl}`);
+
+            if(result.status >= 400) {
+                throw `got invalid http response code ${result.status} while trying to update remote "${meta.remoteName}"`;
+            }
 
             console.info(`remote app "${ meta.remoteName }" updated to version "${ meta.remoteEntryFileName }"`);
         } catch (e) {
-            console.error('build-tools:cli.js::update:error', e);
+            console.error('build-tools::cli.js__ERROR:', e);
         }
     })
     .argv

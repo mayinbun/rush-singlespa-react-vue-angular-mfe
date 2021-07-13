@@ -1,7 +1,7 @@
-// Ideally we would do some async call to fetch versions from the backend.
-import remotes from '../remotes';
+fetch('http://localhost:9999/versions').then(res => res.json()).then((meta) => {
+    // set remote urls
+    meta.forEach(app => (window as any)[app.remoteWindowProperty] = `${app.remoteLocalUrl}/${app.remoteEntryFileName}`);
 
-(window as any).gandalfAppUrl = remotes.gandalfApp.url;
-(window as any).sarumanAppUrl = '//localhost:5002';
-
-import('./bootstrap');
+    // bootstrap single-spa
+    import('./bootstrap');
+});
