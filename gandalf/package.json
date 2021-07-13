@@ -1,13 +1,14 @@
 {
   "name": "gandalf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react mfe",
   "main": "src/index.js",
   "private": true,
   "scripts": {
     "start": "webpack-cli serve --mode development --devtool=source-map",
     "prod": "serve dist --cors -p 5001",
-    "build": "webpack --profile --mode production"
+    "build": "webpack --profile --mode production",
+    "postbuild": "bt-cli update-remote --name gandalf"
   },
   "dependencies": {
     "react": "17.0.2",
@@ -20,6 +21,7 @@
     "@babel/core": "~7.14.6",
     "@babel/preset-env": "~7.14.7",
     "@babel/preset-react": "~7.14.5",
+    "@mayinbun/build-tools": "1.0.0",
     "babel-loader": "~8.2.2",
     "css-loader": "~5.2.6",
     "file-loader": "~6.2.0",
@@ -30,6 +32,6 @@
     "webpack-cli": "~4.7.2",
     "webpack-dev-server": "~3.11.2"
   },
-  "author": "",
+  "author": "Bunyamin Yildirim",
   "license": "ISC"
 }

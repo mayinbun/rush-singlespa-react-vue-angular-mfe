@@ -1,7 +1,8 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const pkg = require('./package.json');
+
+const remoteName = 'gandalf';
 
 module.exports = (env, argv) => {
     const isDev = argv.mode === 'development';
@@ -17,7 +18,7 @@ module.exports = (env, argv) => {
     return {
         output: {
             filename: '[name].[contenthash].bundle.js',
-            uniqueName: 'gandalf',
+            uniqueName: remoteName,
             publicPath: 'http://localhost:5001/',
         },
         module: {
@@ -54,8 +55,8 @@ module.exports = (env, argv) => {
                 filename: './index.html',
             }),
             new ModuleFederationPlugin({
-                name: 'gandalf',
-                filename: 'remoteEntry.js',
+                name: remoteName,
+                filename: `remoteEntry_${pkg.version}.js`,
                 exposes: {
                     './App': './src/single-spa-entry.js',
                     './custom-element': './src/custom-element.js',
