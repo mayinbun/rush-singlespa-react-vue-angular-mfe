@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack-cli serve --mode development --devtool=source-map",
     "prod": "serve dist --cors -p 5002",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "postbuild": "bt-cli update-remote --name saruman"
   },
   "dependencies": {
     "react": "17.0.2",
@@ -20,6 +21,7 @@
     "@babel/core": "~7.14.6",
     "@babel/preset-env": "~7.14.7",
     "@babel/preset-react": "~7.14.5",
+    "@mayinbun/build-tools": "1.0.0",
     "babel-loader": "~8.2.2",
     "css-loader": "~5.2.6",
     "file-loader": "~6.2.0",

@@ -5,9 +5,10 @@ const { readFile } = require('fs').promises;
 const path = require('path');
 const fetch = require('node-fetch');
 const { hideBin } = require('yargs/helpers')
+const { createRemoteMetaFromPackage } = require('./util');
 
 yargs(hideBin(process.argv))
-    .command('update', 'update the app version', (yargs) => {
+    .command('update-remote', 'updates the remote app version', (yargs) => {
         return yargs
             .option('be', {
                 alias: ('backend-url'),
@@ -15,31 +16,21 @@ yargs(hideBin(process.argv))
                 type: 'string',
                 describe: 'name of the remote app',
             })
-            .option('n', {
-                alias: ('name'),
-                demand: true,
+            .option('rv', {
+                alias: ('remote-version'),
                 type: 'string',
-                describe: 'name of the remote app',
-            })
-            .option('uv', {
-                alias: ('update-version'),
-                type: 'string',
-                describe: 'version to update the app to',
+                describe: 'version to update the remote app to',
             })
 
     }, async (argv) => {
-        const name = argv.name;
         const backendApiUrl = argv.be;
 
-        const packageJsonPath = path.resolve(__dirname, 'package.json');
-
         try {
-            const buffer = await readFile(packageJsonPath);
-            const pkg = JSON.parse(buffer);
+            const meta = createRemoteMetaFromPackage();
 
-            const version = argv.version || pkg.version;
+            await fetch(`${ backendApiUrl }/update?name=${ meta.remoteName }&version=${ meta.remoteEntryFileName }`);
 
-            await fetch(`${ backendApiUrl }/update?name=${ name }&version=${ version }`);
+            console.info(`remote app "${ meta.remoteName }" updated to version "${ meta.remoteEntryFileName }"`);
         } catch (e) {
             console.error('build-tools:cli.js::update:error', e);
         }
