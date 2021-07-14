@@ -5,14 +5,10 @@ const { createRemoteMetaFromPackage } = require('@mayinbun/build-tools');
 
 const meta = createRemoteMetaFromPackage();
 
-console.log(meta);
-
 module.exports = (env, argv) => {
-    const isDev = argv.mode === 'development';
     const sharedDeps = Object.keys(pkg.dependencies).map((key) => {
         return {
             [key]: {
-                eager: isDev,
                 singleton: true,
                 strictVersion: true,
             },
@@ -62,7 +58,7 @@ module.exports = (env, argv) => {
                 name: meta.remoteName,
                 filename: meta.remoteEntryFileName,
                 exposes: {
-                    './App': './src/single-spa-entry.js',
+                    './App': './src/main.single-spa.js',
                     './custom-element': './src/custom-element.js',
                 },
                 shared: [

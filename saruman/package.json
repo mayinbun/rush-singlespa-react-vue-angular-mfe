@@ -8,8 +8,10 @@
     "start": "webpack-cli serve --mode development --devtool=source-map",
     "prod": "serve dist --cors -p 5002",
     "build": "webpack --mode production",
-    "postbuild": "bt-cli update-remote --name saruman"
+    "postbuild": "bt-cli update-remote"
   },
+  "remoteLocalUrl": "http://localhost:5002",
+  "remoteCdnUrl": "http://localhost:5002",
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
