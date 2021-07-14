@@ -1,6 +1,6 @@
 {
   "name": "gandalf",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "react mfe",
   "main": "src/index.js",
   "private": true,
@@ -8,7 +8,7 @@
     "start": "webpack-cli serve --mode development --devtool=source-map",
     "prod": "serve dist --cors -p 5001",
     "build": "webpack --profile --mode production",
-    "postbuild": "bt-cli update-remote --name gandalf"
+    "postbuild": "bt-cli update-remote"
   },
   "remoteLocalUrl": "http://localhost:5001",
   "remoteCdnUrl": "https://azure-something",

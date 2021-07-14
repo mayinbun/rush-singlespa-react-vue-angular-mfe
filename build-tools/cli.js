@@ -9,7 +9,7 @@ yargs(hideBin(process.argv))
     .command('update-remote', 'updates the remote app version', (yargs) => {
         return yargs
             .option('be', {
-                alias: ('backend-url'),
+                alias: ('api-url'),
                 default: 'http://localhost:9999',
                 type: 'string',
                 describe: 'name of the remote app',

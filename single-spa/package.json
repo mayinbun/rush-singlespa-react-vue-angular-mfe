@@ -1,7 +1,7 @@
 {
   "name": "@mayinbun/root-config",
   "scripts": {
-    "start": "webpack serve --port 9000",
+    "start": "webpack-cli serve --port 9000 --mode development",
     "lint": "eslint src --ext js",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
