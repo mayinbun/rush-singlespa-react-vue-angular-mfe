@@ -1,43 +1,10 @@
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const mf = require('@angular-architects/module-federation/webpack');
-const path = require('path');
-const share = mf.share;
+const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
 
-const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+module.exports = (config, options) => {
+  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
 
-module.exports = {
-  output: {
-    uniqueName: 'aragorn',
-    publicPath: 'http://localhost:5000/',
-  },
-  optimization: {
-    runtimeChunk: false,
-  },
-  resolve: {
-    alias: {
-      ...sharedMappings.getAliases(),
-    },
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'aragorn',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './AragornModule': './src/app/aragorn/aragorn.module.ts',
-      },
-      shared: share({
-        '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+  console.log(singleSpaWebpackConfig);
 
-        ...sharedMappings.getDescriptors(),
-      }),
-
-    }),
-    sharedMappings.getPlugin(),
-  ],
+  // Feel free to modify this webpack config however you'd like to
+  return singleSpaWebpackConfig;
 };

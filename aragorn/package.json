@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 5000 --live-reload false",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "build:single-spa:aragorn": "ng build aragorn --prod",
+    "serve:single-spa:aragorn": "ng serve --project aragorn --disable-host-check --port 5000 --live-reload false"
   },
   "private": true,
   "dependencies": {
@@ -21,10 +23,13 @@
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
     "rxjs": "~6.6.0",
+    "single-spa": "5.9.3",
+    "single-spa-angular": "5.0.1",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "12.1.0",
     "@angular-devkit/build-angular": "~12.1.1",
     "@angular/cli": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
