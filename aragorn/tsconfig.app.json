@@ -5,6 +5,8 @@
     "types": []
   },
   "files": [
+    "src/main.ts",
+    "src/polyfills.ts",
     "src/main.single-spa.ts",
   ],
   "include": [

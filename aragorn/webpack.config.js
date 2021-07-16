@@ -4,24 +4,40 @@ const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').defaul
 const { merge } = require('webpack-merge');
 
 module.exports = (config, options) => {
-  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
   const meta = createRemoteMetaFromPackage();
 
-  const mergedConfig = merge(singleSpaWebpackConfig, {
-    devServer: {
-      historyApiFallback: true,
+  const mergedConfig = merge(config, {
+      devServer: {
+        historyApiFallback: true,
+      },
+      plugins: [
+        new ModuleFederationPlugin({
+          name: meta.remoteName,
+          filename: meta.remoteEntryFileName,
+          exposes: {
+            './AragornApp': './src/main.single-spa.ts',
+          },
+          shared: [
+            {
+              '@angular/core': {
+                singleton: true,
+                strictVersion: true,
+              },
+              '@angular/common': {
+                singleton: true,
+                strictVersion: true,
+              },
+              '@angular/router': {
+                singleton: true,
+                strictVersion: true,
+              },
+            },
+          ],
+        }),
+      ],
     },
-    plugins: [
-      new ModuleFederationPlugin({
-        name: meta.remoteName,
-        filename: meta.remoteEntryFileName,
-        exposes: {
-          './App': './src/main.single-spa.ts',
-        },
-        shared: [],
-      }),
-    ],
-  });
+    )
+  ;
 
   console.log(mergedConfig);
 

@@ -14,6 +14,9 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
     BrowserModule,
     AppRoutingModule,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent,
+  ],
 })
-export class AppModule {}
+export class AppModule {
+}
