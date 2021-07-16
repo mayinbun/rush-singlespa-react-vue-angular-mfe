@@ -19,7 +19,7 @@
           "options": {
             "customWebpackConfig": {
               "path": "./webpack.config.js",
-              "libraryName": "aragorns",
+              "libraryName": "aragorn",
               "libraryType": "UMD"
             },
             "outputPath": "dist/aragorn",

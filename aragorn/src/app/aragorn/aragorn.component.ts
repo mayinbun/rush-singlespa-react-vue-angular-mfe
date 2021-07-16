@@ -10,7 +10,6 @@ export class AragornComponent implements OnInit {
   constructor(private titleService: Title) {}
 
   ngOnInit(): void {
-    console.log('init');
     this.titleService.setTitle('Aragorn aka Strider')
   }
 
