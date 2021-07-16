@@ -19,11 +19,13 @@
           "options": {
             "customWebpackConfig": {
               "path": "./webpack.config.js",
-              "libraryFormat": "UMD"
+              "libraryName": "aragorns",
+              "libraryType": "UMD"
             },
             "outputPath": "dist/aragorn",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
+            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -33,7 +35,6 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "commonChunk": false,
             "deployUrl": "http://localhost:5000/"
           },
           "configurations": {
@@ -80,10 +81,7 @@
               "browserTarget": "aragorn:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "port": 5000
-          }
+          "defaultConfiguration": "development"
         }
       }
     }
