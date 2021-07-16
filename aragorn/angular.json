@@ -60,7 +60,6 @@
             },
             "development": {
               "commonChunk": false,
-              "polyfills": "src/polyfills.ts",
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

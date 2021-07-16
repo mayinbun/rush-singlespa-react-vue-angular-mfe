@@ -21,7 +21,9 @@ module.exports = (config, options) => {
         shared: [],
       }),
     ],
-  })
+  });
+
+  console.log(mergedConfig);
 
   return mergedConfig;
 };
