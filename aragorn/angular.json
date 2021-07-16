@@ -25,7 +25,6 @@
             "outputPath": "dist/aragorn",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -60,6 +59,8 @@
               "outputHashing": "none"
             },
             "development": {
+              "commonChunk": false,
+              "polyfills": "src/polyfills.ts",
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
