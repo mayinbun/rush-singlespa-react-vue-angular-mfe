@@ -3,9 +3,9 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const ExternalRemotesPlugin = require('external-remotes-plugin');
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'dist')
+const pkg = require('./package.json')
 
 module.exports = async (webpackConfigEnv, argv) => {
-    const isDEV = argv.mode === 'development';
     return {
         entry: {
             main: './src/index',
@@ -17,6 +17,7 @@ module.exports = async (webpackConfigEnv, argv) => {
         optimization: {
             splitChunks: { chunks: 'all' },
         },
+        externals: ['zone.js'],
         output: {
             filename: '[name].[contenthash].js',
             publicPath: 'http://localhost:9000/',
@@ -48,9 +49,12 @@ module.exports = async (webpackConfigEnv, argv) => {
                 remotes: {
                     gandalf: 'gandalf@[window.__remote__gandalf__]',
                     saruman: 'saruman@[window.__remote__saruman__]',
+                    aragorn: 'aragorn@[window.__remote__aragorn__]',
                 },
                 exposes: {},
-                shared: [],
+                shared: {
+                    'rxjs': { eager: true, singleton: true },
+                },
             }),
             new ExternalRemotesPlugin(),
             new HtmlWebpackPlugin({

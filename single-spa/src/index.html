@@ -14,10 +14,13 @@
             font-family: 'Droid Sans', serif;
         }
     </style>
+    <!-- Needed for Angular Apps -->
+    <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.4/dist/zone.min.js"></script>
 </head>
 <body>
+<button style="background: darkred; color: white" onclick="goToPage('/aragorn')">Team Aragorn</button>
 <button style="background: cornflowerblue; color: white" onclick="goToPage('/gandalf')">Team Gandalf</button>
-<button style="background: darkred; color: white" onclick="goToPage('/saruman')">Team Saruman</button>
+<button style="background: black; color: white" onclick="goToPage('/saruman')">Team Saruman</button>
 
 <script>
     function goToPage(page) {

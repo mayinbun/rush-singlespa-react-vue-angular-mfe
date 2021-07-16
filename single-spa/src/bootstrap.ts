@@ -3,6 +3,8 @@ const appImports = {
     gandalf: () => import('gandalf/App'),
     // @ts-ignore
     saruman: () => import('saruman/App'),
+    // @ts-ignore
+    aragorn: () => import('aragorn/App')
 };
 
 import { registerApplication, start } from 'single-spa';
@@ -30,6 +32,14 @@ const routes = constructRoutes({
                 },
             ],
         },
+        {
+            type: 'route', path: 'aragorn', routes: [
+                {
+                    type: 'application',
+                    name: 'aragorn'
+                }
+            ]
+        }
     ],
 });
 

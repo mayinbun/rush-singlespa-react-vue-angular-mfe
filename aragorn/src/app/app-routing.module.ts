@@ -5,7 +5,7 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'aragorn',
     loadChildren: () => import('./aragorn/aragorn.module').then(m => m.AragornModule)
   },
   {

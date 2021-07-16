@@ -5,6 +5,10 @@ function getPackageJsonPath() {
     return path.resolve(process.cwd(), 'package.json');
 }
 
+function sanitizeUrl(url) {
+    return url.endsWith('/') ? url : url + '/'
+}
+
 function createRemoteMetaFromPackage() {
     try {
         const pkg = JSON.parse(fs.readFileSync(getPackageJsonPath()));
@@ -22,8 +26,8 @@ function createRemoteMetaFromPackage() {
             remoteVersion: pkg.version,
             remoteEntryFileName: `remoteEntry_${ pkg.name }_${ pkg.version }.js`,
             remoteWindowProperty: `__remote__${pkg.name}__`,
-            remoteLocalUrl: pkg.remoteLocalUrl,
-            remoteCdnUrl: pkg.remoteCdnUrl
+            remoteLocalUrl: sanitizeUrl(pkg.remoteLocalUrl),
+            remoteCdnUrl: sanitizeUrl(pkg.remoteCdnUrl)
         }
 
     } catch (e) {
