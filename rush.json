@@ -455,6 +455,11 @@
       "reviewCategory": "production"
     },
     {
+      "packageName": "legolas",
+      "projectFolder": "legolas",
+      "reviewCategory": "production"
+    },
+    {
       "packageName": "rivendel",
       "projectFolder": "rivendel",
       "reviewCategory": "production"
