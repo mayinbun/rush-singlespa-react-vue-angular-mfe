@@ -1,19 +1,24 @@
 {
   "name": "legolas",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postbuild": "bt-cli update-remote"
   },
+  "remoteLocalUrl": "http://localhost:5004",
+  "remoteCdnUrl": "https://azure.legolas.com",
   "dependencies": {
     "core-js": "^3.8.3",
+    "single-spa-vue": "2.4.2",
     "vue": "^3.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@mayinbun/build-tools": "1.0.0",
     "@vue/cli-plugin-babel": "~5.0.0-beta.2",
     "@vue/cli-plugin-eslint": "~5.0.0-beta.2",
     "@vue/cli-service": "~5.0.0-beta.2",

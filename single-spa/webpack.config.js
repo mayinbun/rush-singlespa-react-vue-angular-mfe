@@ -3,7 +3,6 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const ExternalRemotesPlugin = require('external-remotes-plugin');
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'dist')
-const pkg = require('./package.json')
 
 module.exports = async (webpackConfigEnv, argv) => {
     return {
@@ -50,6 +49,7 @@ module.exports = async (webpackConfigEnv, argv) => {
                     gandalf: 'gandalf@[window.__remote__gandalf__]',
                     saruman: 'saruman@[window.__remote__saruman__]',
                     aragorn: 'aragorn@[window.__remote__aragorn__]',
+                    legolas: 'legolas@[window.__remote__legolas__]',
                 },
                 exposes: {},
                 shared: {

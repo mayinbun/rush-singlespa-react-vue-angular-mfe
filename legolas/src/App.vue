@@ -1,16 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Legolas></Legolas>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Legolas from './components/Legolas';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Legolas,
+  },
 }
 </script>
 
@@ -19,7 +18,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
