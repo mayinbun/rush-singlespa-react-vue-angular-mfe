@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@angular-architects/module-federation': 12.2.1
   '@angular-builders/custom-webpack': 12.1.0
   '@angular-devkit/build-angular': 12.1.1
   '@angular/animations': 12.1.1
@@ -24,7 +23,6 @@ specifiers:
   '@rush-temp/legolas': file:./projects/legolas.tgz
   '@rush-temp/middle-earth': file:./projects/middle-earth.tgz
   '@rush-temp/rivendel': file:./projects/rivendel.tgz
-  '@rush-temp/root-config': file:./projects/root-config.tgz
   '@rush-temp/saruman': file:./projects/saruman.tgz
   '@types/jest': ^26.0.23
   '@types/node': ^12.11.1
@@ -81,7 +79,6 @@ specifiers:
   zone.js: 0.11.4
 
 dependencies:
-  '@angular-architects/module-federation': 12.2.1_f7bb5c43fac962a29a57012a77a43a97
   '@angular-builders/custom-webpack': 12.1.0_d3833fe030a937a3534be38f487a875a
   '@angular-devkit/build-angular': 12.1.1_08cecb5d688ce9068452b49764739c76
   '@angular/animations': 12.1.1_@angular+core@12.1.1
@@ -102,9 +99,8 @@ dependencies:
   '@rush-temp/build-tools': file:projects/build-tools.tgz
   '@rush-temp/gandalf': file:projects/gandalf.tgz
   '@rush-temp/legolas': file:projects/legolas.tgz_webpack-cli@4.7.2
-  '@rush-temp/middle-earth': file:projects/middle-earth.tgz_1b31e35bd6ea4c48e62b403e341b016b
+  '@rush-temp/middle-earth': file:projects/middle-earth.tgz_@babel+core@7.14.8
   '@rush-temp/rivendel': file:projects/rivendel.tgz
-  '@rush-temp/root-config': file:projects/root-config.tgz_@babel+core@7.14.8
   '@rush-temp/saruman': file:projects/saruman.tgz
   '@types/jest': 26.0.24
   '@types/node': 12.20.16
@@ -161,31 +157,6 @@ dependencies:
   zone.js: 0.11.4
 
 packages:
-
-  /@angular-architects/module-federation-runtime/12.4.0_09ab570107e4e7adac1eb322d034195d:
-    resolution: {integrity: sha512-JkouksIETSLbZiBhmKOKE5Ov+YEmw0aocAVVtJR+Y6M2JOOJEE4U3OVLjUCin3jwI7UuEVfFMOK4H3o1YahgoA==}
-    peerDependencies:
-      '@angular/common': '>=12.4.0'
-      '@angular/core': '>=12.4.0'
-    dependencies:
-      '@angular/common': 12.1.1_@angular+core@12.1.1+rxjs@6.6.7
-      '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
-      tslib: 2.3.0
-    dev: false
-
-  /@angular-architects/module-federation/12.2.1_f7bb5c43fac962a29a57012a77a43a97:
-    resolution: {integrity: sha512-168OVnOl9H3QJmFYlIraYVwbKTYYoKBCIYxEMVj2vt0XN6awPNdqqpp9E2nAFJBAhqORltiEgHsSBQimQUYIkg==}
-    dependencies:
-      '@angular-architects/module-federation-runtime': 12.4.0_09ab570107e4e7adac1eb322d034195d
-      callsite: 1.0.0
-      ngx-build-plus: 12.2.0_a3517569a23566d0f01d3ada47f8b0d2
-      rxjs: 6.6.7
-      word-wrap: 1.2.3
-    transitivePeerDependencies:
-      - '@angular-devkit/build-angular'
-      - '@angular/common'
-      - '@angular/core'
-    dev: false
 
   /@angular-builders/custom-webpack/12.1.0_d3833fe030a937a3534be38f487a875a:
     resolution: {integrity: sha512-7tq0q4PN0L3rTTRxWz5f9xWGt2duYCutDhuRc6Rac6yG13SiTirawqUg2ROx0T3qFjo2G8IWzAageIEzHjl5DA==}
@@ -408,15 +379,6 @@ packages:
     engines: {node: ^12.14.1 || >=14.0.0, npm: ^6.11.0 || ^7.5.6, yarn: '>= 1.13.0'}
     dependencies:
       '@angular-devkit/core': 12.1.1
-      ora: 5.4.1
-      rxjs: 6.6.7
-    dev: false
-
-  /@angular-devkit/schematics/12.1.2:
-    resolution: {integrity: sha512-/UGcAJChq+g7wf46Exr5iIyuVw3j4TxTIntTpuKg/z/xf9Y+8mzJAZgGittu/yFcHAJ9aYcOHctffrfEdV7QSA==}
-    engines: {node: ^12.14.1 || >=14.0.0, npm: ^6.11.0 || ^7.5.6, yarn: '>= 1.13.0'}
-    dependencies:
-      '@angular-devkit/core': 12.1.2
       ora: 5.4.1
       rxjs: 6.6.7
     dev: false
@@ -2924,15 +2886,6 @@ packages:
       jsonc-parser: 3.0.0
     dev: false
 
-  /@schematics/angular/12.1.2:
-    resolution: {integrity: sha512-nnFPp9uHLinP05r9TFsWT+fwlbwbLHg3yzJr+0aIOX1OsZQFV8hblEFEqdzFQJyx1uGMp4nvBHvCUlYv9GVQLg==}
-    engines: {node: ^12.14.1 || >=14.0.0, npm: ^6.11.0 || ^7.5.6, yarn: '>= 1.13.0'}
-    dependencies:
-      '@angular-devkit/core': 12.1.2
-      '@angular-devkit/schematics': 12.1.2
-      jsonc-parser: 3.0.0
-    dev: false
-
   /@sideway/address/4.1.2:
     resolution: {integrity: sha512-idTz8ibqWFrPU8kMirL0CoPH/A29XOzzAzpyN3zQ4kAWnzmNfFmRaoMNN6VI8ske5M73HZyhIaW4OuSFIdM4oA==}
     dependencies:
@@ -4584,10 +4537,6 @@ packages:
     dependencies:
       function-bind: 1.1.1
       get-intrinsic: 1.1.1
-    dev: false
-
-  /callsite/1.0.0:
-    resolution: {integrity: sha1-KAOY5dZkvXQDi28JBRU+borxvCA=}
     dev: false
 
   /callsites/3.1.0:
@@ -8571,18 +8520,6 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
-    dev: false
-
-  /ngx-build-plus/12.2.0_a3517569a23566d0f01d3ada47f8b0d2:
-    resolution: {integrity: sha512-y99qb/DabtIwW5PgOlCf/eXvm65ax5PPOuToZUHtjUD0IrZ7KRfd8fq/3s8OCYYNf4VSdop1EonmI08ftfeqMg==}
-    peerDependencies:
-      '@angular-devkit/build-angular': '>=12.0.0'
-      rxjs: '>= 6.0.0'
-    dependencies:
-      '@angular-devkit/build-angular': 12.1.1_08cecb5d688ce9068452b49764739c76
-      '@schematics/angular': 12.1.2
-      rxjs: 6.6.7
-      webpack-merge: 5.8.0
     dev: false
 
   /nice-try/1.0.5:
@@ -12926,66 +12863,10 @@ packages:
       - webpack-sources
     dev: false
 
-  file:projects/middle-earth.tgz_1b31e35bd6ea4c48e62b403e341b016b:
-    resolution: {integrity: sha512-ql9dz1SK9zOBEdqnWpLOj60cQ1gFoQ9x9e58n8txHsNWgwZnzL97KAhHHuaXmBLNjHfjjtaKaCyjUjoLwoLsWg==, tarball: file:projects/middle-earth.tgz}
+  file:projects/middle-earth.tgz_@babel+core@7.14.8:
+    resolution: {integrity: sha512-I8m29pgxv78j/zmEOb2/+32DUK1CuGu3t41fJE5gBsQcIR6NxuS7EOhpJYc9n46fIKUFlf3yv/NnvtRiTL69ww==, tarball: file:projects/middle-earth.tgz}
     id: file:projects/middle-earth.tgz
     name: '@rush-temp/middle-earth'
-    version: 0.0.0
-    dependencies:
-      '@angular-architects/module-federation': 12.2.1_f7bb5c43fac962a29a57012a77a43a97
-      '@angular-devkit/build-angular': 12.1.1_08cecb5d688ce9068452b49764739c76
-      '@angular/animations': 12.1.1_@angular+core@12.1.1
-      '@angular/cli': 12.1.1
-      '@angular/common': 12.1.1_@angular+core@12.1.1+rxjs@6.6.7
-      '@angular/compiler': 12.1.1
-      '@angular/compiler-cli': 12.1.1_9f77f0dd3273b7700965b9c017043b74
-      '@angular/core': 12.1.1_rxjs@6.6.7+zone.js@0.11.4
-      '@angular/forms': 12.1.1_fb50eb56acf8802a2289994b7bb7c08e
-      '@angular/platform-browser': 12.1.1_230a2a17d1c6a8b3714b56e861bac6c2
-      '@angular/platform-browser-dynamic': 12.1.1_7bad67d3a4b10fea90d72aecabe50463
-      '@angular/router': 12.1.1_fb50eb56acf8802a2289994b7bb7c08e
-      '@types/node': 12.20.16
-      rxjs: 6.6.7
-      tslib: 2.2.0
-      typescript: 4.3.5
-      zone.js: 0.11.4
-    transitivePeerDependencies:
-      - '@angular/localize'
-      - '@angular/service-worker'
-      - clean-css
-      - csso
-      - fibers
-      - html-webpack-plugin
-      - karma
-      - ng-packagr
-      - node-sass
-      - protractor
-      - rework
-      - rework-visit
-      - supports-color
-      - tailwindcss
-      - tslint
-      - webpack-cli
-    dev: false
-
-  file:projects/rivendel.tgz:
-    resolution: {integrity: sha512-op2fqFy0HjBa36lCMZ86xjfepbv87KR4E68FlqBcsE45yTjmTraNIx9Xa/nkbfqO5lenCb9Png//f6gEPlJgGQ==, tarball: file:projects/rivendel.tgz}
-    name: '@rush-temp/rivendel'
-    version: 0.0.0
-    dependencies:
-      body-parser: 1.19.0
-      compression: 1.7.4
-      cors: 2.8.5
-      express: 4.17.1
-      express-sse: 0.5.3
-      lokijs: 1.5.12
-      nodemon: 2.0.12
-    dev: false
-
-  file:projects/root-config.tgz_@babel+core@7.14.8:
-    resolution: {integrity: sha512-M7P913a5+J9QU4LY2FdAR1NqF+oo9HksQgQgI9Zn+2IHiQyy+570YvmkRFH304THEf9BZlHPZbmaGN52X2xsAg==, tarball: file:projects/root-config.tgz}
-    id: file:projects/root-config.tgz
-    name: '@rush-temp/root-config'
     version: 0.0.0
     dependencies:
       '@types/jest': 26.0.24
@@ -13022,6 +12903,20 @@ packages:
       - supports-color
       - utf-8-validate
       - webpack-bundle-analyzer
+    dev: false
+
+  file:projects/rivendel.tgz:
+    resolution: {integrity: sha512-op2fqFy0HjBa36lCMZ86xjfepbv87KR4E68FlqBcsE45yTjmTraNIx9Xa/nkbfqO5lenCb9Png//f6gEPlJgGQ==, tarball: file:projects/rivendel.tgz}
+    name: '@rush-temp/rivendel'
+    version: 0.0.0
+    dependencies:
+      body-parser: 1.19.0
+      compression: 1.7.4
+      cors: 2.8.5
+      express: 4.17.1
+      express-sse: 0.5.3
+      lokijs: 1.5.12
+      nodemon: 2.0.12
     dev: false
 
   file:projects/saruman.tgz:

@@ -435,11 +435,6 @@
     // },
     //
     {
-      "packageName": "middle-earth",
-      "projectFolder": "middle-earth",
-      "reviewCategory": "production"
-    },
-    {
       "packageName": "aragorn",
       "projectFolder": "aragorn",
       "reviewCategory": "production"
@@ -465,13 +460,13 @@
       "reviewCategory": "production"
     },
     {
-      "packageName": "@mayinbun/build-tools",
-      "projectFolder": "build-tools",
+      "packageName": "middle-earth",
+      "projectFolder": "middle-earth",
       "reviewCategory": "production"
     },
     {
-      "packageName": "@mayinbun/root-config",
-      "projectFolder": "single-spa",
+      "packageName": "@mayinbun/build-tools",
+      "projectFolder": "build-tools",
       "reviewCategory": "production"
     }
   ]

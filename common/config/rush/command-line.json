@@ -23,6 +23,13 @@
       "summary": "build app",
       "enableParallelism": false,
       "ignoreMissingScript": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "prod",
+      "summary": "serve apps production ready dist folder",
+      "enableParallelism": true,
+      "ignoreMissingScript": true
     }
     // {
     //   /**
