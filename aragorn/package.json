@@ -12,8 +12,8 @@
     "postbuild": "bt-cli update-remote"
   },
   "private": true,
-  "remoteLocalUrl": "http://localhost:5000",
-  "remoteCdnUrl": "someCdnUrl",
+  "remoteLocalUrl": "http://localhost:5000/",
+  "remoteCdnUrl": "http://localhost:5000/",
   "dependencies": {
     "@angular/animations": "12.1.1",
     "@angular/common": "12.1.1",

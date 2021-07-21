@@ -10,7 +10,7 @@ module.exports = {
             'Access-Control-Allow-Origin': '*',
         },
         port: 5004,
-        publicPath: remoteLocalUrl,
+        publicPath: isDEV ? meta.remoteLocalUrl : meta.remoteCdnUrl,
     },
     chainWebpack: (config) => {
         // config.optimization.delete('splitChunks');

@@ -12,24 +12,88 @@
     <!-- Needed for Angular Apps -->
     <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.4/dist/zone.min.js"></script>
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
         body {
             font-family: 'Droid Sans', serif;
             background-image: url('./assets/map-4k.jpg');
             background-size: cover;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
         }
 
         .aragorn {
-            position: absolute;
-            left: 500px;
+            color: white;
+            background: darkred;
+        }
 
+        .legolas {
+            color: white;
+            background: forestgreen;
+        }
+
+        .gandalf {
+            color: black;
+            background: cornflowerblue;
+        }
+
+        .saruman {
+            color: white;
+            background: black;
+        }
+
+        .heroes {
+            color: black;
+            position: absolute;
+            top: 0;
+            right: 1rem;
         }
     </style>
 </head>
 <body>
-<button class="aragorn" style="background: darkred; color: white" onclick="goToPage('/aragorn')">Team Aragorn</button>
-<button style="background: cornflowerblue; color: white" onclick="goToPage('/gandalf')">Team Gandalf</button>
-<button style="background: black; color: white" onclick="goToPage('/saruman')">Team Saruman</button>
-<button style="background: forestgreen; color: white" onclick="goToPage('/legolas')">Team Legolas</button>
+<template id="single-spa-layout">
+    <single-spa-router>
+        <route path="aragorn">
+            <main class="aragorn">
+                <application name="aragorn"></application>
+            </main>
+        </route>
+        <route path="legolas">
+            <main class="legolas">
+                <application name="legolas"></application>
+            </main>
+        </route>
+        <route path="gandalf">
+            <main class="gandalf">
+                <application name="gandalf"></application>
+            </main>
+        </route>
+        <route path="saruman">
+            <main class="saruman">
+                <application name="saruman"></application>
+            </main>
+        </route>
+    </single-spa-router>
+</template>
+
+
+<section class="heroes">
+    <h3>Choose your Hero</h3>
+    <button class="aragorn" style="background: darkred; color: white" onclick="goToPage('/aragorn')">Team Aragorn</button>
+    <button class="gandalf" style="background: cornflowerblue; color: white" onclick="goToPage('/gandalf')">Team Gandalf</button>
+    <button class="saruman" style="background: black; color: white" onclick="goToPage('/saruman')">Team Saruman</button>
+    <button class="legolas" style="background: forestgreen; color: white" onclick="goToPage('/legolas')">Team Legolas</button>
+</section>
+
 
 <script>
     function goToPage(page) {

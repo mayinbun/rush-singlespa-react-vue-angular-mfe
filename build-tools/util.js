@@ -38,3 +38,4 @@ function createRemoteMetaFromPackage() {
 
 exports.getPackageJsonPath = getPackageJsonPath;
 exports.createRemoteMetaFromPackage = createRemoteMetaFromPackage;
+exports.sanitizeUrl = sanitizeUrl;

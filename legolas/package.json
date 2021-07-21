@@ -9,8 +9,8 @@
     "prod": "serve dist --cors -p 5004",
     "postbuild": "bt-cli update-remote"
   },
-  "remoteLocalUrl": "http://localhost:5004",
-  "remoteCdnUrl": "https://azure.legolas.com",
+  "remoteLocalUrl": "http://localhost:5004/",
+  "remoteCdnUrl": "http://localhost:5004/",
   "dependencies": {
     "core-js": "^3.8.3",
     "single-spa-vue": "2.4.2",

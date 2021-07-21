@@ -6,6 +6,7 @@ const { createRemoteMetaFromPackage } = require('@mayinbun/build-tools');
 const meta = createRemoteMetaFromPackage();
 
 module.exports = (env, argv) => {
+    const isDEV = argv.mode === 'development';
     const sharedDeps = Object.keys(pkg.dependencies).map((key) => {
         return {
             [key]: {
@@ -17,9 +18,9 @@ module.exports = (env, argv) => {
 
     return {
         output: {
-            filename: 'index.bundle.js',
+            filename: '[name].[contenthash].bundle.js',
             uniqueName: meta.remoteName,
-            publicPath: 'http://localhost:5002/',
+            publicPath: isDEV ? meta.remoteLocalUrl : meta.remoteCdnUrl,
         },
         module: {
             rules: [
@@ -52,14 +53,12 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: './src/index.html',
                 favicon: './src/favicon.ico',
-                filename: './index.html',
             }),
             new ModuleFederationPlugin({
                 name: meta.remoteName,
                 filename: meta.remoteEntryFileName,
                 exposes: {
                     './App': './src/main.single-spa.js',
-                    './custom-element': './src/custom-element.js',
                 },
                 shared: [
                     ...sharedDeps,

@@ -2,13 +2,14 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const { createRemoteMetaFromPackage } = require('@mayinbun/build-tools');
 const { merge } = require('webpack-merge');
 const pkg = require('./package.json');
+const meta = createRemoteMetaFromPackage();
 
 module.exports = (config, options) => {
-  const meta = createRemoteMetaFromPackage();
+  const isDEV = options.mode === 'development';
 
   const mergedConfig = merge(config, {
       output: {
-        publicPath: meta.remoteLocalUrl,
+        publicPath: isDEV ? meta.remoteLocalUrl : meta.remoteCdnUrl,
         uniqueName: 'aragorn',
       },
       optimization: {

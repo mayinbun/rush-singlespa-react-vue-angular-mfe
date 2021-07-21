@@ -6,6 +6,8 @@ const { createRemoteMetaFromPackage } = require('@mayinbun/build-tools');
 const meta = createRemoteMetaFromPackage()
 
 module.exports = (env, argv) => {
+    const isDEV = argv.mode === 'development';
+
     const sharedDeps = Object.keys(pkg.dependencies).map((key) => {
         return {
             [key]: {
@@ -18,7 +20,7 @@ module.exports = (env, argv) => {
         output: {
             filename: '[name].[contenthash].bundle.js',
             uniqueName: meta.remoteName,
-            publicPath: pkg.remoteLocalUrl
+            publicPath: isDEV ? meta.remoteLocalUrl : meta.remoteCdnUrl
         },
         module: {
             rules: [
