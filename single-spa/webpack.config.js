@@ -1,8 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 const ExternalRemotesPlugin = require('external-remotes-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'dist')
+
 
 module.exports = async (webpackConfigEnv, argv) => {
     return {
@@ -20,6 +22,7 @@ module.exports = async (webpackConfigEnv, argv) => {
         output: {
             filename: '[name].[contenthash].js',
             publicPath: 'http://localhost:9000/',
+            clean: true,
         },
         devServer: {
             historyApiFallback: true,
@@ -39,6 +42,10 @@ module.exports = async (webpackConfigEnv, argv) => {
                     use: {
                         loader: 'ts-loader',
                     },
+                },
+                {
+                    test: /\.css$/i,
+                    use: ['style-loader', 'css-loader'],
                 },
             ],
         },
@@ -60,6 +67,14 @@ module.exports = async (webpackConfigEnv, argv) => {
             new HtmlWebpackPlugin({
                 template: 'src/index.html',
                 inject: 'body',
+            }),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, 'src', 'assets'),
+                        to: path.resolve(__dirname, 'dist', 'assets'),
+                    },
+                ],
             }),
         ],
     }

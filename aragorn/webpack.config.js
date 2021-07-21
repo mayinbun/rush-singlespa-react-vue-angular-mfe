@@ -8,8 +8,6 @@ module.exports = (config, options) => {
 
   const mergedConfig = merge(config, {
       output: {
-        filename: '[name].bundle.[contenthash]',
-        chunkFilename: '[name].bundle.js?h=[chunkhash]',
         publicPath: meta.remoteLocalUrl,
         uniqueName: 'aragorn',
       },

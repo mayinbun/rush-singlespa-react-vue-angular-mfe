@@ -16,6 +16,13 @@
       "summary": "start locally",
       "enableParallelism": true,
       "ignoreMissingScript": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "build",
+      "summary": "build app",
+      "enableParallelism": false,
+      "ignoreMissingScript": true
     }
     // {
     //   /**

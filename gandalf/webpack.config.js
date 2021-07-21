@@ -18,7 +18,7 @@ module.exports = (env, argv) => {
         output: {
             filename: '[name].[contenthash].bundle.js',
             uniqueName: meta.remoteName,
-            publicPath: 'http://localhost:5001/',
+            publicPath: pkg.remoteLocalUrl
         },
         module: {
             rules: [
@@ -58,7 +58,6 @@ module.exports = (env, argv) => {
                 filename: meta.remoteEntryFileName,
                 exposes: {
                     './App': './src/main.single-spa.js',
-                    './custom-element': './src/custom-element.js',
                 },
                 shared: [
                     ...sharedDeps,

@@ -6,6 +6,7 @@
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "prod": "serve dist --cors -p 5004",
     "postbuild": "bt-cli update-remote"
   },
   "remoteLocalUrl": "http://localhost:5004",
@@ -16,15 +17,16 @@
     "vue": "^3.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "~7.14.6",
     "@babel/eslint-parser": "^7.12.16",
     "@mayinbun/build-tools": "1.0.0",
     "@vue/cli-plugin-babel": "~5.0.0-beta.2",
     "@vue/cli-plugin-eslint": "~5.0.0-beta.2",
     "@vue/cli-service": "~5.0.0-beta.2",
     "@vue/compiler-sfc": "^3.0.4",
-    "eslint": "^7.20.0",
-    "eslint-plugin-vue": "^7.2.0"
+    "eslint": "^7.29.0",
+    "eslint-plugin-vue": "^7.2.0",
+    "serve": "^12.0.0"
   },
   "eslintConfig": {
     "root": true,

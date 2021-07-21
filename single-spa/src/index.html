@@ -9,16 +9,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
           integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- Needed for Angular Apps -->
+    <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.4/dist/zone.min.js"></script>
     <style>
         body {
             font-family: 'Droid Sans', serif;
+            background-image: url('./assets/map-4k.jpg');
+            background-size: cover;
+        }
+
+        .aragorn {
+            position: absolute;
+            left: 500px;
+
         }
     </style>
-    <!-- Needed for Angular Apps -->
-    <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.4/dist/zone.min.js"></script>
 </head>
 <body>
-<button style="background: darkred; color: white" onclick="goToPage('/aragorn')">Team Aragorn</button>
+<button class="aragorn" style="background: darkred; color: white" onclick="goToPage('/aragorn')">Team Aragorn</button>
 <button style="background: cornflowerblue; color: white" onclick="goToPage('/gandalf')">Team Gandalf</button>
 <button style="background: black; color: white" onclick="goToPage('/saruman')">Team Saruman</button>
 <button style="background: forestgreen; color: white" onclick="goToPage('/legolas')">Team Legolas</button>
