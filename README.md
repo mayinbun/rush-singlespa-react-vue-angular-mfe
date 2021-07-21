@@ -35,6 +35,3 @@ The apps will run on the following ports:
 - legolas (remote vue app): `http://localhost:5004`
 - middle-earth (host/shell app): `http://localhost:9000`
 - rivendel (backend for storing remote metadata): `http://localhost:9999`
-
-### Webpack
-The webpack configs are auto generated with [@angular-architects/module-federation](https://github.com/angular-architects/module-federation-plugin) package
