@@ -1,5 +1,5 @@
 # Angularushpack
-Monorepo micro frontend example with Angular, Rush and Webpack 5 Module Federation
+Monorepo micro frontend example with Rush, SingleSpa, React, Vue, Angular and Webpack 5 Module Federation
 
 ### Getting started
 
