@@ -1,4 +1,4 @@
-# Angularushpack
+# Microfrontends
 Monorepo micro frontend example with Rush, SingleSpa, React, Vue, Angular and Webpack 5 Module Federation
 
 ### Getting started
