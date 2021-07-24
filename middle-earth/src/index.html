@@ -52,15 +52,20 @@
         }
 
         .heroes {
-            color: black;
             position: absolute;
             top: 0;
-            right: 1rem;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .heroes button {
+            padding: 1rem;
         }
     </style>
 </head>
 <body>
-<template id="single-spa-layout">
+<!-- <template id="single-spa-layout">
     <single-spa-router>
         <route path="aragorn">
             <main class="aragorn">
@@ -83,11 +88,10 @@
             </main>
         </route>
     </single-spa-router>
-</template>
+</template> -->
 
 
 <section class="heroes">
-    <h3>Choose your Hero</h3>
     <button class="aragorn" style="background: darkred; color: white" onclick="goToPage('/aragorn')">Team Aragorn</button>
     <button class="gandalf" style="background: cornflowerblue; color: white" onclick="goToPage('/gandalf')">Team Gandalf</button>
     <button class="saruman" style="background: black; color: white" onclick="goToPage('/saruman')">Team Saruman</button>

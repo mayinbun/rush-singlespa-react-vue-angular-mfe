@@ -26,7 +26,7 @@ eventsource
             });
 
             const changedAppNames = newValue
-                .filter(({ remoteVersion: v1 }) => !oldValue.some(({ remoteVersion: v2 }) => v1 === v2))
+                .filter(({ remoteVersion: v1 }) => !oldValue.every(({ remoteVersion: v2 }) => v1 === v2))
                 .map((value) => value.remoteName);
 
             return changedAppNames;

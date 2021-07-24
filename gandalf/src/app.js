@@ -4,6 +4,10 @@ import { GandalfCard } from './components/gandalf-card/gandalf-card';
 import favicon from './favicon.ico';
 
 export default class App extends React.Component {
+    componentDidCatch(error, errorInfo) {
+        console.error(error);
+    }
+
     render() {
         return (
             <Fragment>

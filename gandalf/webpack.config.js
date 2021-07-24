@@ -62,7 +62,7 @@ module.exports = (env, argv) => {
                     './App': './src/main.single-spa.js',
                 },
                 shared: [
-                    ...sharedDeps,
+                    ...Object.keys(pkg.dependencies)
                 ],
             }),
         ],
