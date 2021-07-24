@@ -7,7 +7,7 @@ const appImports = {
   aragorn: () => import("aragorn/App"),
   // @ts-ignore
   legolas: () => import("legolas/App"),
-};
+}
 
 import { registerApplication, start } from "single-spa";
 import {
@@ -105,8 +105,6 @@ const routes = constructRoutes({
   ],
 });
 
-// const routes = constructRoutes(document.getElementById('single-spa-layout'))
-
 const applications = constructApplications({
   routes,
   loadApp: ({ name }) => appImports[name](),
@@ -114,4 +112,6 @@ const applications = constructApplications({
 const layoutEngine = constructLayoutEngine({ routes, applications });
 
 applications.forEach(registerApplication);
-start();
+start({
+  urlRerouteOnly: true,
+});
