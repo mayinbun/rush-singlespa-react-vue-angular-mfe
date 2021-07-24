@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js --ignore rivendel.db.json",
+    "prod": "npm run start",
     "test": "test"
   },
   "dependencies": {
